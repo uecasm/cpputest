@@ -235,19 +235,13 @@ typedef unsigned long long cpputest_ulonglong;
  * It's not required to have these match the size of the "real" type, but it's occasionally convenient.
  */
 
-#if defined(CPPUTEST_64BIT) && !defined(CPPUTEST_64BIT_32BIT_LONGS)
-#define CPPUTEST_SIZE_OF_FAKE_LONG_LONG_TYPE 16
-#else
-#define CPPUTEST_SIZE_OF_FAKE_LONG_LONG_TYPE 8
-#endif
-
 struct cpputest_longlong
 {
 #if defined(__cplusplus)
   cpputest_longlong() {}
   cpputest_longlong(int) {}
 #endif
-  char dummy[CPPUTEST_SIZE_OF_FAKE_LONG_LONG_TYPE];
+  char dummy[8];
 };
 
 struct cpputest_ulonglong
@@ -256,7 +250,7 @@ struct cpputest_ulonglong
   cpputest_ulonglong() {}
   cpputest_ulonglong(int) {}
 #endif
-  char dummy[CPPUTEST_SIZE_OF_FAKE_LONG_LONG_TYPE];
+  char dummy[8];
 };
 
 #if !defined(__cplusplus)
